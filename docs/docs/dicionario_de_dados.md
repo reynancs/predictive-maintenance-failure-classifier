@@ -2,19 +2,12 @@
 
 ## Descrição  
 
-Essa empresa forneceu um conjunto de
-dados contendo informações coletadas a partir de dispositivos IoT sensorizando atributos
-básicos de cada máquina. O objetivo é criar um sistema capaz de identificar as falhas que
-venham a ocorrer, e se possível, qual foi o tipo da falha. Cada amostra no conjunto de dados é
-composta por 8 atributos que descrevem o comportamento de desgaste da máquina e do
-ambiente. Além dessas características, cada amostra é rotulada com uma das 5 possíveis
-classes de defeitos
-
->Este dataset foi fornecido pela empresa contendo um conjunto de dados de informações coletadas a partir de dispositivos IoT sensorizando atributos
+>O dataset fornecido pela empresa contém um conjunto de dados de informações coletadas a partir de dispositivos IoT sensorizando atributos
 básicos de  **máquinas rotativas industriais** (como equipamentos de usinagem, bombas e compressores). Para este escopo será considerando Centros de Usinagem.
-Cada registro representa uma observação de operação de máquina monitorada por sensores IoT. Os atributos coletados descrevem o **ambiente de operação** (temperatura, umidade), as **condições da máquina** (velocidade rotacional, torque, desgaste da ferramenta) e os **eventos de falha** associados a diferentes modos (desgaste, calor, potência, tensão, falhas aleatórias).  
+Cada registro representa uma observação de operação de máquina monitorada por sensores IoT. 
+Cada amostra no conjunto de dados é composta por 8 atributos que descrevem o **ambiente de operação** (temperatura, umidade), as **condições da máquina** (velocidade rotacional, torque, desgaste da ferramenta) e os **eventos de falha** associados a cinco diferentes classes de defeitos (desgaste, calor, potência, tensão, falhas aleatórias).
 
-O objetivo principal do dataset é suportar estudos de **manutenção preditiva**, permitindo prever não apenas **se a máquina vai falhar**, mas também **qual o tipo de falha provável**.  
+O objetivo principal do dataset é suportar estudos de manutenção preditiva, permitindo prever não apenas se a máquina vai falhar, mas também qual o tipo de falha provável.  
 
 ---
 
