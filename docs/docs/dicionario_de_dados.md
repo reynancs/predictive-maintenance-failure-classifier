@@ -15,8 +15,8 @@ O objetivo principal do dataset é suportar estudos de manutenção preditiva, p
 
 | CAMPO                   | FUNÇÃO (ATRIBUTO \| ALVO) | TIPO DE VARIÁVEL | DESCRIÇÃO |
 |--------------------------|---------------------------|------------------|-----------|
-| **id**                  | Atributo                 | Numérica (Inteiro) | Identificador único das amostras do banco de dados. Não possui significado físico, usado apenas para indexação. |
-| **id_produto**           | Atributo                 | Categórica (String) | Identificador do produto/máquina, combinação da variável `tipo` com um número sequencial. Representa diferentes unidades operacionais. |
+| **id**                  | ID                | Numérica (Inteiro) | Identificador único das amostras do banco de dados. Não possui significado físico, usado apenas para indexação. |
+| **id_produto**           | ID               | Categórica (String) | Identificador do produto/máquina, combinação da variável `tipo` com um número sequencial. Representa diferentes unidades operacionais. |
 | **tipo**                 | Atributo                 | Categórica (L, M, H) | Tipo de produto/máquina, definido por categoria de carga: **L** (Low), **M** (Medium), **H** (High). No dataset AI4I, isso simula variação entre diferentes condições de produção. |
 | **temperatura_ar**       | Atributo                 | Numérica (Contínua) | Temperatura ambiente medida em Kelvin. Importante para avaliar condições externas que influenciam o desempenho térmico da máquina. |
 | **temperatura_processo** | Atributo                 | Numérica (Contínua) | Temperatura do processo (interno à máquina). No dataset AI4I, valores mais altos estão associados a falhas de dissipação de calor (FDC). |
@@ -32,3 +32,4 @@ O objetivo principal do dataset é suportar estudos de manutenção preditiva, p
 | **FA** (Falha Aleatória) | Alvo (Binário)           | Numérica (0/1) | Indica falha aleatória sem padrão determinístico. No dataset, essas falhas são geradas para simular eventos não explicados por variáveis medidas. |
 
 ---
+
