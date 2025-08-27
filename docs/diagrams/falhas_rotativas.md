@@ -1,3 +1,4 @@
+```mermaid
 
 flowchart TD
   A[Maquinas Rotativas - Tipos de Falha]
@@ -25,3 +26,4 @@ flowchart TD
   FP_ex  --> FP_imp[Impactos: Perda de eficiencia; Sobrecorrente; Parada subita]
   FTE_ex --> FTE_imp[Impactos: Queima de enrolamentos; Falhas eletricas graves]
   FA_ex  --> FA_imp[Impactos: Falhas imprevisiveis; Alta criticidade]
+```
