@@ -1,0 +1,27 @@
+
+flowchart TD
+  A[Maquinas Rotativas - Tipos de Falha]
+
+  A --> FDF[FDF - Desgaste da Ferramenta]
+  A --> FDC[FDC - Dissipacao de Calor]
+  A --> FP[FP - Falha de Potencia]
+  A --> FTE[FTE - Tensao Excessiva]
+  A --> FA[FA - Aleatoria]
+
+  FDF --> FDF_att[Atributos: Tool Wear, Torque, RPM]
+  FDC --> FDC_att[Atributos: Temp de Processo e de Ar]
+  FP  --> FP_att[Atributos: Torque, RPM, Potencia derivada]
+  FTE --> FTE_att[Atributos: RPM, Condicoes eletricas]
+  FA  --> FA_att[Atributos: Qualquer variavel]
+
+  FDF_att --> FDF_ex[Exemplos: CNC - tornos e fresas; setor automotivo; setor aeroespacial]
+  FDC_att --> FDC_ex[Exemplos: Motores; Compressores; CNC]
+  FP_att  --> FP_ex[Exemplos: Bombas; Turbinas; Motores industriais]
+  FTE_att --> FTE_ex[Exemplos: Motores; Inversores; Bombas eletricas submersas]
+  FA_att  --> FA_ex[Exemplos: Rolamentos; Compressores; Sistemas CNC]
+
+  FDF_ex --> FDF_imp[Impactos: Peca fora de tolerancia; Quebra de ferramenta; Parada]
+  FDC_ex --> FDC_imp[Impactos: Sobreaquecimento; Queima; Reducao da vida util]
+  FP_ex  --> FP_imp[Impactos: Perda de eficiencia; Sobrecorrente; Parada subita]
+  FTE_ex --> FTE_imp[Impactos: Queima de enrolamentos; Falhas eletricas graves]
+  FA_ex  --> FA_imp[Impactos: Falhas imprevisiveis; Alta criticidade]
