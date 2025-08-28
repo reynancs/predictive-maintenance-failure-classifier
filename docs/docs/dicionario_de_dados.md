@@ -11,25 +11,26 @@ O objetivo principal do dataset é suportar estudos de manutenção preditiva, p
 
 ---
 
-## 📑 Dicionário de Dados  
+## 📘 Dicionário de Dados  
 
-| CAMPO                   | FUNÇÃO (ATRIBUTO \| ALVO) | TIPO DE VARIÁVEL | DESCRIÇÃO |
-|--------------------------|---------------------------|------------------|-----------|
-| **id**                  | ID                | Numérica (Inteiro) | Identificador único das amostras do banco de dados. Não possui significado físico, usado apenas para indexação. |
-| **id_produto**           | ID               | Categórica (String) | Identificador do produto/máquina, combinação da variável `tipo` com um número sequencial. Representa diferentes unidades operacionais. |
-| **tipo**                 | Atributo                 | Categórica (L, M, H) | Tipo de produto/máquina, definido por categoria de carga: **L** (Low), **M** (Medium), **H** (High). No dataset AI4I, isso simula variação entre diferentes condições de produção. |
-| **temperatura_ar**       | Atributo                 | Numérica (Contínua) | Temperatura ambiente medida em Kelvin. Importante para avaliar condições externas que influenciam o desempenho térmico da máquina. |
-| **temperatura_processo** | Atributo                 | Numérica (Contínua) | Temperatura do processo (interno à máquina). No dataset AI4I, valores mais altos estão associados a falhas de dissipação de calor (FDC). |
-| **umidade_relativa**     | Atributo                 | Numérica (Contínua) | Umidade relativa do ar (%). No AI4I, usada como fator ambiental que pode impactar falhas de isolamento elétrico e desgaste acelerado. |
-| **velocidade_rotacional**| Atributo                 | Numérica (Contínua) | Velocidade rotacional da máquina em rotações por minuto (RPM). Valores anormais podem indicar problemas de balanceamento ou sobrecarga. |
-| **torque**               | Atributo                 | Numérica (Contínua) | Torque da máquina em Newton-metro. No AI4I, varia entre ~3.0 a 76.0 Nm. Torques elevados podem levar a falhas de potência (FP). |
-| **desgaste_da_ferramenta** | Atributo               | Numérica (Contínua) | Tempo acumulado de uso da ferramenta (minutos). Aumenta linearmente com a operação e está diretamente associado a falhas por desgaste (FDF). |
-| **falha_maquina**        | Alvo (Binário)           | Numérica (0/1) | Variável binária indicando se houve falha geral na máquina (1) ou não (0). Serve como rótulo consolidado de falha. |
-| **FDF** (Falha Desgaste Ferramenta) | Alvo (Binário) | Numérica (0/1) | Indica falha por desgaste excessivo da ferramenta de corte. Associada ao tempo de uso (`desgaste_da_ferramenta`) e às condições de torque/RPM. |
-| **FDC** (Falha Dissipação Calor) | Alvo (Binário)   | Numérica (0/1) | Indica falha térmica por dissipação inadequada de calor. Relacionada principalmente a `temperatura_processo` elevada em relação à `temperatura_ar`. |
-| **FP** (Falha Potência) | Alvo (Binário)           | Numérica (0/1) | Indica falha por potência insuficiente ou sobrecarga da máquina. Frequentemente correlacionada com variações de torque e rotação. |
-| **FTE** (Falha Tensão Excessiva) | Alvo (Binário)   | Numérica (0/1) | Indica falha elétrica devido à sobretensão ou condições anômalas de operação elétrica. |
-| **FA** (Falha Aleatória) | Alvo (Binário)           | Numérica (0/1) | Indica falha aleatória sem padrão determinístico. No dataset, essas falhas são geradas para simular eventos não explicados por variáveis medidas. |
+| CAMPO                  | FUNÇÃO (ATRIBUTO \| ALVO) | TIPO DE VARIÁVEL           | DESCRIÇÃO |
+|-------------------------|---------------------------|----------------------------|-----------|
+| **id**                 | ID                 | Numérica (Inteiro)         | Identificador único das amostras do banco de dados. |
+| **id_produto**         | ID                  | Categórica (String)        | Identificador único do produto, combinação da variável `tipo` com um número de identificação. |
+| **tipo**               | Atributo                  | Categórica (L, M, H)       | Tipo de produto/máquina, definido por categoria de carga: **L** (Low), **M** (Medium), **H** (High). |
+| **temperatura_ar**     | Atributo                  | Numérica (Contínua, K)     | Temperatura ambiente medida em Kelvin. |
+| **temperatura_processo** | Atributo                | Numérica (Contínua, K)     | Temperatura do processo (interno à máquina).  |
+| **umidade_relativa**   | Atributo                  | Numérica (Contínua, %)     | Umidade relativa do ar (%). Pode impactar falhas de isolamento elétrico e desgaste acelerado. |
+| **velocidade_rotacional** | Atributo               | Numérica (Contínua, RPM)   | Velocidade rotacional da máquina em rotações por minuto (RPM).  |
+| **torque**             | Atributo                  | Numérica (Contínua, Nm)    | Torque da máquina em Newton-metro.  |
+| **desgaste_da_ferramenta** | Atributo              | Numérica (Contínua, Min)   | Tempo acumulado de uso da ferramenta (minutos).  |
+| **falha_maquina**      | Alvo (Binário)            | Numérica (0/1)             | Variável binária indicando se houve falha geral na máquina (1) ou não (0).  |
+| **FDF** (Falha Desgaste Ferramenta) | Alvo (Binário) | Numérica (0/1)            | Indica falha por desgaste excessivo da ferramenta de corte. Associada ao tempo de uso (`desgaste_da_ferramenta`) e às condições de `torque`. |
+| **FDC** (Falha Dissipação Calor)    | Alvo (Binário) | Numérica (0/1)            | Indica falha térmica por dissipação inadequada de calor. Relacionada principalmente a `temperatura_processo` elevada em relação à `temperatura_ar`. |
+| **FP** (Falha Potência)             | Alvo (Binário) | Numérica (0/1)            | Indica falha por potência insuficiente ou sobrecarga da máquina. Frequentemente correlacionada com variações de torque e rotação. |
+| **FTE** (Falha Tensão Excessiva)    | Alvo (Binário) | Numérica (0/1)            | Indica falha elétrica devido a sobretensão ou condições anômalas de operação elétrica. |
+| **FA** (Falha Aleatória)            | Alvo (Binário) | Numérica (0/1)            | Indica falha aleatória sem padrão determinístico.  |
+
 
 ---
 

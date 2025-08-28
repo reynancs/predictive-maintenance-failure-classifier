@@ -10,7 +10,7 @@
 ## 📌 Contextualização  
 Uma empresa do setor industrial contratou a criação de um sistema inteligente de **manutenção preditiva** para suas máquinas rotativas.  
 
-Essas máquinas são monitoradas por dispositivos **IoT**, que coletam informações do ambiente e da própria operação (como torque, velocidade, desgaste e temperatura). O objetivo é prever **falhas futuras** e identificar **qual tipo de falha ocorrerá**, permitindo planejamento de manutenção, redução de downtime e melhor gestão de peças de reposição.  
+Essas máquinas são monitoradas por dispositivos IoT, que coletam informações do ambiente e da própria operação (como torque, velocidade, desgaste e temperatura). O objetivo é prever falhas futuras e identificar qual tipo de falha ocorrerá, permitindo planejamento de manutenção, redução de downtime e melhor gestão de peças de reposição.  
 
 > Neste projeto, o escopo foi adaptado para **Centros de Usinagem CNC**, onde os sensores monitoram parâmetros de corte, desgaste da ferramenta e condições ambientais.  
 
@@ -54,12 +54,12 @@ O dataset permite identificar cinco classes de falhas industriais:
 
 ## 📑 Dicionário dos Dados  
 
-### Descrição  
+### Descrição
 O dataset contém registros coletados via IoT em **máquinas rotativas industriais**, simulando **Centros de Usinagem CNC**.  
 
 Cada linha representa uma observação com atributos de ambiente, condições de operação e ocorrência de falhas.  
 
-> O objetivo é prever não apenas **se a máquina vai falhar**, mas também **qual o tipo de falha provável**, apoiando estratégias de manutenção preditiva.  
+> O objetivo é prever não apenas se a máquina vai falhar, mas também qual o tipo de falha provável, apoiando estratégias de manutenção preditiva.  
 
 ### Estrutura dos Dados  
 
