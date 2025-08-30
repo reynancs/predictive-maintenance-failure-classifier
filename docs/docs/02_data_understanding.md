@@ -14,7 +14,7 @@ Serão disponibilizados dois arquivos de dados:
 
 ## Relatório Automatizado (ydata-profiling)
 O relatório completo automático referente ao entendimento dos dados afim de verificar a qualidade e distribuições em:
-[reports/eda/profile_report.html](../reports/profile_report_data_understanding.html)
+[reports/profile-reports/data_raw.html](../reports/profile-reports/data_raw.html)
 
 ## Qualidade dos Dados — Resumo do Profile Report
 - Principais achados sobre nulos, distribuições e outliers
