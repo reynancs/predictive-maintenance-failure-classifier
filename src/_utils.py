@@ -1,4 +1,3 @@
-
 """
 Utility functions for data analysis and preprocessing.
 
@@ -11,6 +10,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from typing import List, Tuple, Dict, Union
+import warnings
+import math
 
 
 def detect_outliers_iqr(data: pd.Series,
@@ -178,7 +179,7 @@ def analyze_outliers(df: pd.DataFrame,
         outlier_mask, stats = detect_outliers_iqr(df[col], col)
         
         # Plot outliers
-        plot_outliers(df[col], col, outlier_mask, stats)
+        #plot_outliers(df[col], col, outlier_mask, stats)
         
         # Handle outliers if requested
         if handle_method:
@@ -195,9 +196,11 @@ def analyze_outliers(df: pd.DataFrame,
     
     return pd.DataFrame(results)
 
-#___________________________________________________________________________________________________________________________________________________________________________
+###########################################################
+# Função para plotar distribuição e boxplot
+###########################################################
 
-def plot_distribution_and_boxplot_hue_safe(
+def plot_distribution_and_boxplot(
     df,
     numeric_cols,
     hue_col=None,          # ex.: "falha_maquina" ou None
@@ -210,13 +213,6 @@ def plot_distribution_and_boxplot_hue_safe(
     Para cada coluna numérica, plota Histograma (com KDE se possível) + Boxplot lado a lado.
     Se o KDE falhar (covariância singular, variância zero, etc.), faz fallback automático.
     """
-
-    import numpy as np
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    import seaborn as sns
-    import warnings
-    import math
 
     if len(numeric_cols) == 0:
         raise ValueError("Lista 'numeric_cols' está vazia.")
@@ -290,12 +286,15 @@ def plot_distribution_and_boxplot_hue_safe(
     plt.tight_layout()
     plt.show()
 
-# --------------------------------------------------------------------------------------------------------------------------------------------------------
+###########################################################
+# Função para plotar gráfico de Pareto
+###########################################################
+
 def plot_pareto(
     df, 
     col, 
-    normalize=True,          # True = usa proporções; False = usa contagens e converte internamente
-    cutoff=0.80,             # linha-guia do acumulado (ex.: 0.80 = 80%)
+    normalize=True,          
+    cutoff=0.80,    # linha-guia do acumulado (ex.: 0.80 = 80%)
     figsize=(12,6),
     rotate_xticks=0,
     title=None
@@ -346,3 +345,70 @@ def plot_pareto(
 
     return perc, acum
 
+
+###########################################################
+# Função para plotar boxplot
+###########################################################
+
+def plot_boxplots_category(df, column, category_col):
+    plt.figure(figsize=(12, 8))
+    sns.boxplot(data=df, x=category_col, y=column, hue=category_col, palette='tab10')
+    plt.title(f'Boxplot de {column} por {category_col}')
+    plt.xlabel(category_col)
+    plt.ylabel(column)
+    plt.tight_layout()
+    plt.show()
+
+###########################################################
+# Função para plotar matriz de correlação
+###########################################################
+def plot_correlation_matrix(df):
+    corr_df = df[df.select_dtypes(include=['float']).columns]  # Apenas atributos contínuos
+    plt.figure(figsize=(12, 8))
+    correlation_matrix = corr_df.corr()
+    sns.heatmap(correlation_matrix, annot=True, cmap='Blues', fmt='.2f', linewidths=0.5)
+    plt.title('Matriz de Correlação')
+    plt.show()
+
+###########################################################
+# Função para plotar matriz de correlação
+###########################################################
+# Calcular Cramér's V
+def cramers_v(confusion_matrix):
+    from scipy.stats import chi2_contingency
+    chi2 = chi2_contingency(confusion_matrix)[0]
+    n = confusion_matrix.sum().sum()
+    phi2 = chi2 / n
+    r, k = confusion_matrix.shape
+    return (phi2 / min(k - 1, r - 1)) ** 0.5
+
+###########################################################
+# Função para obter medidas
+###########################################################
+def obter_medidas(y_true, y_pred, average=None):
+    import pandas as pd
+    from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
+
+    # Inferência automática do tipo de média
+    if average is None:
+        n_classes = pd.Series(y_true).nunique()
+        average = 'binary' if n_classes == 2 else 'macro'  # macro para multiclasse
+
+    dict_medidas = {
+        'Recall':    round(recall_score(y_true, y_pred, average=average, zero_division=0), 3),
+        'F1-Score':  round(f1_score(y_true, y_pred, average=average, zero_division=0), 3),
+        'Precision': round(precision_score(y_true, y_pred, average=average, zero_division=0), 3),
+        'Accuracy':  round(accuracy_score(y_true, y_pred), 3)
+    }
+    return dict_medidas
+###########################################################
+# Resumo dos scores (média ± std)
+def _resume_cv(scores_dict, prefix="test_"):
+    rows = []
+    for k, v in scores_dict.items():
+        if k.startswith(prefix):
+            metric = k.replace(prefix, "")
+            mean = np.mean(v)
+            std  = np.std(v)
+            rows.append((metric, mean, std))
+    return pd.DataFrame(rows, columns=["metric", "mean", "std"]).sort_values("metric")

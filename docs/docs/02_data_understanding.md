@@ -22,6 +22,7 @@ O relatório completo automático referente ao entendimento dos dados afim de ve
 - Alertas sobre desbalanceamento de classes
 - Recomendações para preparação dos dados
 
-## 🔍 Insights Iniciais  
+## 🔍 Insights Iniciais
+- 
 - Quais variáveis parecem mais correlacionadas com falhas?  
 - Alguma relação clara (ex.: torque alto → mais falhas FP)?  

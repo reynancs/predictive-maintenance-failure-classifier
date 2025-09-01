@@ -18,7 +18,6 @@ Realize uma apresentação documentando o processo de gestão de atividades do p
 Mais do que os resultados em si, o principal objetivo deste desafio é demonstrar de forma clara e objetiva durante a apresentação, todo o processo de pensamento e planejamento do projeto.
 
 **Itens avaliados na entrega do projeto:**
-
 - Desenvolvimento e organização do código para resolver o problema proposto;
 - Documentação da solução (código, modelagem e diagramas);
 - Interpretação clara e precisa do problema;
