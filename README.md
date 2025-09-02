@@ -12,7 +12,7 @@ Uma empresa do setor industrial contratou a criação de um sistema inteligente 
 
 Essas máquinas são monitoradas por dispositivos IoT, que coletam informações do ambiente e da própria operação (como torque, velocidade, desgaste e temperatura). O objetivo é prever falhas futuras e identificar qual tipo de falha ocorrerá, permitindo planejamento de manutenção, redução de downtime e melhor gestão de peças de reposição.  
 
-> Neste projeto, o escopo foi adaptado para **Centros de Usinagem CNC**, onde os sensores monitoram parâmetros de corte, desgaste da ferramenta e condições ambientais.  
+> Neste projeto, o escopo foi considerado para **Centros de Usinagem CNC**, onde os sensores monitoram parâmetros de corte, desgaste da ferramenta e condições ambientais.  
 
 ---
 
@@ -33,7 +33,7 @@ Essas máquinas são monitoradas por dispositivos IoT, que coletam informações
 ## 🏆 Critérios de Sucesso
 
 - **Negócio:** Reduzir paradas não planejadas em pelo menos 20% (simulado).
-- **Técnico:** Obter F1-score > 0.90 nas predições de falhas específicas.
+- **Técnico:** Obter Recall > 0.90 nas predições de falhas específicas.
 - **Apresentação:** Storytelling claro, documentação organizada e código reprodutível.
 
 ---
@@ -84,6 +84,7 @@ Cada linha representa uma observação com atributos de ambiente, condições de
 ---
 
 ## 📂 Estrutura do Repositório  
+Baseado no framework Cookiecutter
 
 ```
 ├── LICENSE            <- Open-source license if one is chosen
@@ -150,7 +151,7 @@ Cada linha representa uma observação com atributos de ambiente, condições de
 
 ## ⚙️ Tecnologias Utilizadas  
 
-- Python 3.10+  
+- Python 3.12.7  
 - Pandas, Numpy, Scikit-learn  
 - XGBoost, Random Forest, Logistic Regression  
 - SHAP e LIME para explicabilidade  
