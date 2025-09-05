@@ -17,7 +17,7 @@ O objetivo principal do dataset é suportar estudos de manutenção preditiva, p
 |-------------------------|---------------------------|----------------------------|-----------|
 | **id**                 | ID                 | Numérica (Inteiro)         | Identificador único das amostras do banco de dados. |
 | **id_produto**         | ID                  | Categórica (String)        | Identificador único do produto, combinação da variável `tipo` com um número de identificação. |
-| **tipo**               | Atributo                  | Categórica (L, M, H)       | Tipo de produto/máquina, definido por categoria de carga: **L** (Low), **M** (Medium), **H** (High). |
+| **tipo**               | Atributo                  | Categórica (L, M, H)       | Tipo de Qualidade do Produto, definido por suas variações de qualidade como: **L** (Low), **M** (Medium), **H** (High). |
 | **temperatura_ar**     | Atributo                  | Numérica (Contínua, K)     | Temperatura ambiente medida em Kelvin. |
 | **temperatura_processo** | Atributo                | Numérica (Contínua, K)     | Temperatura do processo (interno à máquina).  |
 | **umidade_relativa**   | Atributo                  | Numérica (Contínua, %)     | Umidade relativa do ar (%). Pode impactar falhas de isolamento elétrico e desgaste acelerado. |
